@@ -1,5 +1,10 @@
 var EventTable = React.createClass ({
   render() {
+
+    var events = [];
+    this.props.events.forEach((event) => {
+      events.push(<Event event={event} key={'event' + event.id}/>);
+    });
     return(
       <table className="table table-striped">
         <thead>
@@ -10,7 +15,9 @@ var EventTable = React.createClass ({
             <th className="col-md-4">Description</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {events}
+        </tbody>
       </table>
     )
   }
