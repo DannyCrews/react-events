@@ -7,7 +7,7 @@ var EventApplication = React.createClass({
         </div>
         <div className="row">
           <div className="col-md-12">
-
+            <EventTable/>
           </div>
         </div>
       </div>
