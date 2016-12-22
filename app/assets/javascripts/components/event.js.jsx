@@ -1,5 +1,5 @@
 const Event = (props) => {
-  Event.proptypes = {
+  Event.propTypes = {
     name: React.PropTypes.string,
     event_date: React.PropTypes.string,
     place: React.PropTypes.string,

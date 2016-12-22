@@ -1,4 +1,4 @@
-var EventApplication = React.createClass({
+const EventApplication = React.createClass({
   getInitialState() {
     return { events: [] };
   },
@@ -8,16 +8,15 @@ var EventApplication = React.createClass({
   },
 
   getDataFromApi() {
-    var self = this;
       $.ajax({
         url: '/api/events',
-        success: function(data) {
-          self.setState({ events: data });
-        },
-        error: function(xhr, status, error) {
-          alert('Cannot get data from API: ', error);
-        }
+        success: (data) => this.setState({ events: data }),
+        error: (xhr, status, error) => alert('Cannot get data from API: ', error)
       });
+  },
+
+  handleSearch(events) {
+    this.setState({ events: events });
   },
 
   render() {
@@ -25,6 +24,11 @@ var EventApplication = React.createClass({
       <div className="container">
         <div className="jumbotron">
           <h1>React Event Application</h1>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <SearchForm handleSearch={this.handleSearch} />
+          </div>
         </div>
         <div className="row">
           <div className="col-md-12">
