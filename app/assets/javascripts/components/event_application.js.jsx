@@ -32,6 +32,13 @@ const EventApplication = React.createClass({
     this.setState({ events: events });
   },
 
+  handleUpdateRecord(old_event, event) {
+      let events = this.state.events.slice();
+      let index = events.indexOf(old_event);
+      events.splice(index, 1, event);
+      this.setState({ events: events });
+    },
+
   render() {
     return(
       <div className="container">
@@ -49,7 +56,8 @@ const EventApplication = React.createClass({
         <div className="row">
           <div className="col-md-12">
             <EventTable events={this.state.events}
-                        handleDeleteRecord={this.handleDeleteRecord} />
+                        handleDeleteRecord={this.handleDeleteRecord}
+                        handleUpdateRecord={this.handleUpdateRecord} />
           </div>
         </div>
       </div>
